@@ -31,7 +31,13 @@ class ShoppingCart {
 
 }
 
-const cart = new ShoppingCart()
-cart.addItem("Trash can", 1, 15.5)
-
 module.exports = ShoppingCart
+
+
+// const cart = new ShoppingCart()
+// cart.addItem("Trash can", 2, 15.5)
+// console.log(cart.items)
+// cart.clear()
+// cart.addItem("Trash", 1, 15.5)
+// console.log(cart.items)
+// console.log(cart.total())

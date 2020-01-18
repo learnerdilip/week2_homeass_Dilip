@@ -1,8 +1,9 @@
-
 function groupAdultsByAgeRange(people) {
+  // for empty array input
   if(people.length === 0) {
     return {}
   }
+  // filter the people with age less than 18 years
   const adults = people.filter(person => person.age >= 18)
   const groupAdults = adults.reduce(((agg,item) => {
     // reduce function conditions
@@ -21,16 +22,14 @@ function groupAdultsByAgeRange(people) {
     // console.log(agg)
     return agg
   }),{"20 and younger":[],"21-30":[],"31-40":[],"41-50":[],"51 and older":[]})
-  console.log(groupAdults)
+  //to filter out empty arrays
+  const validObjArr = Object.entries(groupAdults).filter(item => item[1].length > 0)
+  console.log(validObjArr)
+  // if array is empty return empty object
+  if(validObjArr.length === 0) {
+    return {}
+  }
   return groupAdults
 }
-
-groupAdultsByAgeRange([{name: "Anna", age: 31}, {name: "John", age: 32}, {name: "Hank", age: 60}])
-
 module.exports = { groupAdultsByAgeRange }
-
-// ✓ JS file should exist, and exported value should be a function
-// 1) an empty array results in an empty object
-// 2) filters out people under the age of 18
-// 3) only contains non-empty groups
-// 4) groups array of people by age
+groupAdultsByAgeRange([{name: "Anna", age: 31}, {name: "John", age: 32}, {name: "Hank", age: 60}])
