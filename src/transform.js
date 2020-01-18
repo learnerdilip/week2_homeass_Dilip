@@ -24,12 +24,17 @@ function groupAdultsByAgeRange(people) {
   }),{"20 and younger":[],"21-30":[],"31-40":[],"41-50":[],"51 and older":[]})
   //to filter out empty arrays
   const validObjArr = Object.entries(groupAdults).filter(item => item[1].length > 0)
-  console.log(validObjArr)
+  // console.log("OBJECT ARRAY:",validObjArr)
   // if array is empty return empty object
   if(validObjArr.length === 0) {
     return {}
   }
-  return groupAdults
+  // converting array to final returnable object
+  const result = validObjArr.reduce(((final,item) => {
+    final[item[0]]=item[1]
+    return final
+  }),{})
+  return result
 }
 module.exports = { groupAdultsByAgeRange }
 groupAdultsByAgeRange([{name: "Anna", age: 31}, {name: "John", age: 32}, {name: "Hank", age: 60}])
